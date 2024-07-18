@@ -25,7 +25,20 @@ console.log(timeoutObject); // Timeout { ... }
 ***********************************************************************/
 
 function dynamicIntervalCount(cb, delay, amount) {
-  // Your code here 
+  let counter = 0;
+
+  let intervalId;
+  intervalId = setInterval(() => {
+    cb();
+    counter++;
+
+    if (amount !== undefined && counter === amount) {
+      clearInterval(intervalId);
+    }
+  }, delay);
+  if (amount === undefined) {
+    return intervalId;
+  }
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
